@@ -7,7 +7,7 @@ export const Navbar = () => {
     <div className="bg-[#1A1C1E] shadow-lg border-b border-cyan-900/30 w-screen fixed top-0 z-50">
       <nav className="flex justify-around items-center h-16 max-w-7xl mx-auto px-4">
         {/* Logo Section */}
-        <div className="flex items-center">
+        <Link to={"./"} className="flex items-center cursor-pointer">
           <img
             src="/logo.png"
             className="w-12 h-auto logo-animate"
@@ -16,7 +16,7 @@ export const Navbar = () => {
           <span className="ml-2 text-white font-bold text-xl tracking-tight hidden sm:block">
             TRA<span className="text-[#00D2FF]">TOPUP</span>
           </span>
-        </div>
+        </Link>
 
         {/* Search Section */}
         <div className="hidden sm:block">

@@ -3,11 +3,15 @@ import { PackageCard } from "../components/PackageCard";
 import type { Package } from "../types/Package.type";
 import { useParams } from "react-router-dom";
 import { packages } from "../assets/data/mlbb/package";
+import { Payment } from "../components/Payment";
+import QRModal from "../components/QRModal";
 
 const GameDetail = () => {
   const [gameId, setGameId] = useState<string>("");
   const [zoneId, setZoneId] = useState<string>("");
   const params = useParams<{ gameSlug: string }>();
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const handleNumericChange = (
     e: ChangeEvent<HTMLInputElement>,
@@ -69,7 +73,12 @@ const GameDetail = () => {
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {packages.map((pkg) => (
-                <PackageCard pkg={pkg} key={pkg.id} />
+                <PackageCard
+                  pkg={pkg}
+                  key={pkg.id}
+                  isSelected={selectedId === pkg.id.toString()}
+                  onSelect={setSelectedId}
+                />
               ))}
             </div>
           </section>
@@ -82,7 +91,12 @@ const GameDetail = () => {
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {savingPackages.map((pkg) => (
-                <PackageCard pkg={pkg} key={pkg.id} />
+                <PackageCard
+                  pkg={pkg}
+                  key={pkg.id}
+                  isSelected={selectedId === pkg.id.toString()}
+                  onSelect={setSelectedId}
+                />
               ))}
             </div>
           </section>
@@ -128,31 +142,19 @@ const GameDetail = () => {
           </div>
 
           {/* Payment Method */}
-          <div className="bg-slate-800/80 p-6 rounded-2xl border border-slate-700">
-            <h3 className="flex items-center gap-2 font-bold mb-4">
-              <span className="text-[#00D2FF]">💳</span> Payment Method
-            </h3>
-            <div className="border-2 border-[#00D2FF] bg-slate-900 p-4 rounded-xl flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-white/10 rounded flex items-center justify-center font-bold text-[10px]">
-                  ABA
-                </div>
-                <div>
-                  <div className="text-xs font-bold uppercase">ABA KHQR</div>
-                  <div className="text-[10px] text-slate-400">
-                    Scan to pay with any banking app
-                  </div>
-                </div>
-              </div>
-              <div className="bg-[#00D2FF] text-white rounded-full p-1 text-[10px]">
-                ✔
-              </div>
-            </div>
-          </div>
+          <Payment />
 
-          <button className="w-full bg-[#00D2FF] hover:bg-[#00b8e6] text-slate-900 font-extrabold py-4 rounded-xl transition-all shadow-lg shadow-[#00D2FF]/20">
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="w-full bg-[#00D2FF] hover:bg-[#00b8e6] text-slate-900 font-extrabold py-4 rounded-xl transition-all shadow-lg shadow-[#00D2FF]/20">
             BUY NOW
           </button>
+          <QRModal
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+            amount={100}
+            packageName={"Monthly Epic Bundle"}
+          />
         </div>
       </div>
     </div>
