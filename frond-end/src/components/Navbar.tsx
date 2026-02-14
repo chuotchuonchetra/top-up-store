@@ -1,6 +1,6 @@
 import { Gamepad2, House, PhoneCall } from "lucide-react";
 import { Link } from "react-router-dom";
-
+import "../styles/navbar.css";
 export const Navbar = () => {
   return (
     // Changed bg to brand-dark (#1A1C1E) and border to a subtle cyan tint
@@ -8,7 +8,11 @@ export const Navbar = () => {
       <nav className="flex justify-around items-center h-16 max-w-7xl mx-auto px-4">
         {/* Logo Section */}
         <div className="flex items-center">
-          <img src="/logo.png" className="w-12 h-auto" alt="TRATOPUP Logo" />
+          <img
+            src="/logo.png"
+            className="w-12 h-auto logo-animate"
+            alt="TRATOPUP Logo"
+          />
           <span className="ml-2 text-white font-bold text-xl tracking-tight hidden sm:block">
             TRA<span className="text-[#00D2FF]">TOPUP</span>
           </span>
@@ -18,14 +22,14 @@ export const Navbar = () => {
         <div className="hidden sm:block">
           <input
             type="search"
-            className="bg-[#242729] border border-gray-700 text-white rounded-full px-5 py-1.5 w-64 focus:outline-none focus:ring-2 focus:ring-[#00D2FF] focus:border-transparent transition-all placeholder-gray-500"
+            className="bg-[#242729] border border-gray-700 text-white rounded-full px-5 py-1.5 w-64 focus:outline-none focus:ring-2 focus:ring-[#00D2FF] focus:border-transparent transition-all placeholder-gray-500 "
             placeholder="Search games..."
           />
         </div>
 
         {/* Navigation Links */}
         <div className="hidden md:block">
-          <ul className="flex space-x-8">
+          <ul className="flex space-x-8   c:\Users\traem\Downloads\image-Photoroom.png">
             <li>
               <Link
                 to={"./home"}

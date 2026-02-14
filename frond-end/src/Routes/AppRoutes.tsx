@@ -1,25 +1,31 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
+import Home from "../pages/Home";
+import GameDetail from "../pages/GameDetail";
+import Checkout from "../pages/Checkout";
 import Login from "../pages/Login";
 import { Register } from "../pages/Register";
-import GameDetail from "../pages/GameDetail";
-import Home from "../pages/Home";
-import Checkout from "../pages/Checkout";
 
 const AppRoutes = () => {
   return (
     <Routes>
-      {/* 1. Wrap children with the Layout component as a parent Route */}
+      {/* Layout Routes */}
       <Route element={<MainLayout />}>
-        {/* 2. These child routes will render inside the Layout's <Outlet /> */}
-        <Route path="/" element={<Home />} />
-        <Route path="/gamedetail" element={<GameDetail />} />
-        <Route path="/checkout" element={<Checkout />} />
+        <Route index element={<Home />} />
+        <Route path="home" element={<Navigate to="/" replace />} />
+
+        {/* Simplified Dynamic Route */}
+        <Route path="games/:gameSlug" element={<GameDetail />} />
+
+        <Route path="checkout" element={<Checkout />} />
       </Route>
 
-      {/* Routes outside the Layout (e.g., a Login page) */}
-      <Route path="/login" element={<Login />} />
-      <Route path="/Register" element={<Register />} />
+      {/* Auth Routes - Consistent Casing */}
+      <Route path="login" element={<Login />} />
+      <Route path="register" element={<Register />} />
+
+      {/* Fallback Route */}
+      <Route path="*" element={<div>Page Not Found</div>} />
     </Routes>
   );
 };

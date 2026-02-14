@@ -60,9 +60,9 @@ const Login = () => {
               </div>
             </div>
 
-            <button className="flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            <div className="flex w-full justify-center rounded-md border  bg-[#1A1C1E] border-b border-cyan-900/30 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
               Sign in
-            </button>
+            </div>
           </form>
 
           <div className="mt-6">
@@ -78,22 +78,22 @@ const Login = () => {
             </div>
 
             <div className="mt-6 grid grid-cols-2 gap-3">
-              <button className="flex items-center gap-1 w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50">
+              <div className="flex items-center gap-1 w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50">
                 <img
                   className="w-4 h-4"
                   src="https://cdn-icons-png.flaticon.com/512/300/300221.png"
                   alt=""
                 />{" "}
                 <span>Google</span>
-              </button>
-              <button className="flex items-center gap-1 w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50">
+              </div>
+              <div className="flex items-center gap-1 w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50">
                 <img
                   className="w-4 h-4"
                   src="https://cdn-icons-png.flaticon.com/512/5968/5968764.png"
                   alt=""
                 />{" "}
                 <span>Facebook</span>
-              </button>
+              </div>
             </div>
           </div>
         </div>
