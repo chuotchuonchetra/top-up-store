@@ -1,4 +1,4 @@
-import type { Package } from "../types/Package.type";
+import type { Package } from "../../types/Package.type";
 
 interface PackageCardProps {
   pkg: Package;

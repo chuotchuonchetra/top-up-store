@@ -1,10 +1,10 @@
 import { useState, type ChangeEvent } from "react";
-import { PackageCard } from "../../components/PackageCard";
+import { PackageCard } from "../../components/client/PackageCard";
 import type { Package } from "../../types/Package.type";
 import { useParams } from "react-router-dom";
 import { packages } from "../../assets/data/mlbb/package";
-import { Payment } from "../../components/Payment";
-import QRModal from "../../components/QRModal";
+import { Payment } from "../../components/client/Payment";
+import QRModal from "../../components/client/QRModal";
 
 const GameDetail = () => {
   const [gameId, setGameId] = useState<string>("");

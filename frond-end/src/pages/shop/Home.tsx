@@ -1,4 +1,4 @@
-import GameCard from "../../components/GameCard";
+import GameCard from "../../components/client/GameCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import type { Game } from "../../types/game";
