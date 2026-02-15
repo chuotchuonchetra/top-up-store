@@ -1,15 +1,36 @@
-import { useState, type ChangeEvent } from "react";
+import { useEffect, useState, type ChangeEvent } from "react";
 import { PackageCard } from "../../components/client/PackageCard";
-import type { Package } from "../../types/Package.type";
+import type { Package } from "../../types/package";
 import { useParams } from "react-router-dom";
-import { packages } from "../../assets/data/mlbb/package";
 import { Payment } from "../../components/client/Payment";
 import QRModal from "../../components/client/QRModal";
+import axios from "axios";
 
 const GameDetail = () => {
+  const [packages, setPackages] = useState<Package[]>([]);
+
+  const params = useParams<{ gameSlug: string; gameId: string }>();
+  useEffect(() => {
+    const fetchPackages = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:3000/api/v1/packages",
+          {
+            params: {
+              gameId: params.gameId,
+            },
+          },
+        );
+        setPackages(response.data);
+        console.log("Fetched packages:", response.data);
+      } catch (error) {
+        console.error("Error fetching packages:", error);
+      }
+    };
+    fetchPackages();
+  }, [params.gameSlug, params.gameId]);
   const [gameId, setGameId] = useState<string>("");
   const [zoneId, setZoneId] = useState<string>("");
-  const params = useParams<{ gameSlug: string }>();
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
@@ -25,34 +46,6 @@ const GameDetail = () => {
       setter(value);
     }
   };
-
-  const savingPackages: Package[] = [
-    {
-      id: 6,
-      type: "Monthly Epic Bundle",
-      price: "$4.09",
-      icon: "../../public/assets/montlypackage.png",
-    },
-    {
-      id: 7,
-      type: "42 Diamonds",
-      price: "$0.85",
-      icon: "../../public/assets/diamond.png",
-    },
-    {
-      id: 8,
-      type: "14 Diamonds",
-      price: "$0.30",
-      icon: "../../public/assets/diamond.png",
-    },
-    {
-      id: 9,
-      type: "70 Diamonds",
-      price: "$1.29",
-      icon: "../../public/assets/diamond.png",
-    },
-    // ... add more as needed
-  ];
 
   return (
     <div className="min-h-screen bg-[#0f172a] p-4 md:p-8 text-white">
@@ -73,24 +66,6 @@ const GameDetail = () => {
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {packages.map((pkg) => (
-                <PackageCard
-                  pkg={pkg}
-                  key={pkg.id}
-                  isSelected={selectedId === pkg.id.toString()}
-                  onSelect={setSelectedId}
-                />
-              ))}
-            </div>
-          </section>
-
-          {/* Saving Packages Section */}
-          <section>
-            <div className="flex items-center gap-2 mb-4 text-[#00D2FF] font-bold uppercase tracking-wider">
-              <span className="p-1 bg-[#00D2FF]/20 rounded-full">💎</span>
-              SAVING PACKAGES
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {savingPackages.map((pkg) => (
                 <PackageCard
                   pkg={pkg}
                   key={pkg.id}

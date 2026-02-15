@@ -56,16 +56,7 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
-        {
-          name: "Genshin Impact",
-          slug: "genshin-impact",
-          publisher: "HoYoverse",
-          status: "active",
-          imageUrl:
-            "https://i.pinimg.com/736x/dd/d6/7a/ddd67a00297de983b9c275294f4e66b6.jpg",
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
+
         {
           name: "Free Fire",
           slug: "free-fire",
@@ -73,6 +64,16 @@ module.exports = {
           status: "active",
           imageUrl:
             "https://i.pinimg.com/736x/c3/57/b9/c357b90e475fde955804248b0db8890a.jpg",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "Genshin Impact",
+          slug: "genshin-impact",
+          publisher: "HoYoverse",
+          status: "active",
+          imageUrl:
+            "https://i.pinimg.com/736x/dd/d6/7a/ddd67a00297de983b9c275294f4e66b6.jpg",
           createdAt: new Date(),
           updatedAt: new Date(),
         },

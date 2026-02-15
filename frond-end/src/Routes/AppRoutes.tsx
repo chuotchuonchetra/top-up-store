@@ -16,7 +16,7 @@ const AppRoutes = () => {
         <Route path="home" element={<Navigate to="/" replace />} />
 
         {/* Simplified Dynamic Route */}
-        <Route path="games/:gameSlug" element={<GameDetail />} />
+        <Route path="/game/:gameSlug/:gameId" element={<GameDetail />} />
 
         <Route path="checkout" element={<Checkout />} />
       </Route>

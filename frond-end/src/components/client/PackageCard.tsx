@@ -1,4 +1,4 @@
-import type { Package } from "../../types/Package.type";
+import type { Package } from "../../types/package";
 
 interface PackageCardProps {
   pkg: Package;
@@ -33,10 +33,14 @@ export const PackageCard = ({
         </div>
       )}
 
-      <div className="text-orange-400 font-bold">{pkg.price}</div>
+      <div className="text-orange-400 font-bold">{pkg.price}$</div>
       <div className="flex items-center gap-2 text-xs text-slate-300">
-        <img src={pkg.icon} className="w-6 h-6 object-contain" alt={pkg.type} />
-        <span>{pkg.type}</span>
+        <img
+          src={pkg.iconUrl}
+          className="w-6 h-6 object-contain"
+          alt={pkg.title}
+        />
+        <span>{pkg.title}</span>
       </div>
     </button>
   );

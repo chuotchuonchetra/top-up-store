@@ -1,5 +1,5 @@
 //gameController.js
-const { Game } = require("../models");
+const { Game } = require("../../models");
 const router = require("express").Router();
 
 // Get all games

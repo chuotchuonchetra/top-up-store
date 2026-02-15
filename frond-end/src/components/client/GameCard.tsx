@@ -17,7 +17,7 @@ const GameCard: React.FC<GameCardProps> = ({ game }) => {
 
   return (
     <div
-      onClick={() => navigate(`/games/${game.slug}`)} // Dynamic routing
+      onClick={() => navigate(`/game/${game.slug}/${game.id}`)} // Dynamic routing
       className="group relative w-full max-w-60 cursor-pointer overflow-hidden rounded-xl bg-slate-800 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20">
       {/* Image Container */}
       <div className="aspect-[3.5/4] overflow-hidden">
