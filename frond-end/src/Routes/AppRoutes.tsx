@@ -1,10 +1,11 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
-import Home from "../pages/Home";
-import GameDetail from "../pages/GameDetail";
-import Checkout from "../pages/Checkout";
-import Login from "../pages/Login";
-import { Register } from "../pages/Register";
+import Home from "../pages/shop/Home";
+import GameDetail from "../pages/shop/GameDetail";
+import Checkout from "../pages/shop/Checkout";
+import Login from "../pages/auth/Login";
+import { Register } from "../pages/auth/Register";
+import { AdminDashboard } from "../pages/admin/AdminDashboard";
 
 const AppRoutes = () => {
   return (
@@ -26,6 +27,7 @@ const AppRoutes = () => {
 
       {/* Fallback Route */}
       <Route path="*" element={<div>Page Not Found</div>} />
+      <Route path="admindashboard" element={<AdminDashboard />} />
     </Routes>
   );
 };
