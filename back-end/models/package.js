@@ -23,7 +23,8 @@ module.exports = (sequelize, DataTypes) => {
     {
       gameId: DataTypes.INTEGER,
       title: DataTypes.STRING,
-      diamondAmount: DataTypes.INTEGER,
+      iconUrl: DataTypes.STRING,
+      amount: DataTypes.INTEGER,
       price: DataTypes.DECIMAL,
       supplierCode: DataTypes.STRING,
     },

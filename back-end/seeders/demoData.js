@@ -1,4 +1,9 @@
-"use strict";
+const {
+  mlbbPackages,
+  pubgPackages,
+  ffPackages,
+  genshinPackages,
+} = require("../src/assets/packages");
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
@@ -115,32 +120,24 @@ module.exports = {
       { returning: ["id"] },
     );
 
+    const packages = [
+      ...mlbbPackages,
+      ...pubgPackages,
+      ...ffPackages,
+      ...genshinPackages,
+    ];
     // 3. Fake Packages (Linked to Game ID 1 - Mobile Legends)
-    await queryInterface.bulkInsert(
-      "Packages",
-      [
-        {
-          gameId: 1,
-          title: "86 Diamonds",
-          diamondAmount: 86,
-          price: 2.0,
-          supplierCode: "ML-86",
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          gameId: 1,
-          title: "172 Diamonds",
-          diamondAmount: 172,
-          price: 4.0,
-          supplierCode: "ML-172",
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-      ],
-      { returning: ["id"] },
-    );
-
+    const packageData = packages.map((pkg) => ({
+      gameId: pkg.gameId,
+      title: pkg.title,
+      iconUrl: pkg.iconUrl,
+      amount: pkg.amount,
+      price: pkg.price,
+      supplierCode: pkg.supplierCode,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    }));
+    await queryInterface.bulkInsert("Packages", packageData);
     // 4. Fake Order
     await queryInterface.bulkInsert(
       "Orders",

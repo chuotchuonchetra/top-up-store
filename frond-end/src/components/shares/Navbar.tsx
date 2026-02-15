@@ -1,6 +1,6 @@
 import { Gamepad2, House, PhoneCall } from "lucide-react";
 import { Link } from "react-router-dom";
-import "../styles/navbar.css";
+import "../../styles/navbar.css";
 export const Navbar = () => {
   return (
     // Changed bg to brand-dark (#1A1C1E) and border to a subtle cyan tint
