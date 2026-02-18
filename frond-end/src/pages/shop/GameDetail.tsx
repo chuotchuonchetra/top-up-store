@@ -1,10 +1,11 @@
-import { useEffect, useState, type ChangeEvent } from "react";
 import { PackageCard } from "../../components/client/PackageCard";
 import type { Package } from "../../types/package";
 import { useParams } from "react-router-dom";
 import { Payment } from "../../components/client/Payment";
 import QRModal from "../../components/client/QRModal";
 import axios from "axios";
+import { InputId } from "./InputId";
+import { useEffect, useState } from "react";
 
 const GameDetail = () => {
   const [packages, setPackages] = useState<Package[]>([]);
@@ -29,23 +30,9 @@ const GameDetail = () => {
     };
     fetchPackages();
   }, [params.gameSlug, params.gameId]);
-  const [gameId, setGameId] = useState<string>("");
-  const [zoneId, setZoneId] = useState<string>("");
+
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-
-  const handleNumericChange = (
-    e: ChangeEvent<HTMLInputElement>,
-    setter: (val: string) => void,
-  ) => {
-    const { value } = e.target;
-
-    // Strict Filter: Only allow a string of digits from start to end
-    // The empty string '' check allows the user to backspace/clear the field
-    if (value === "" || /^\d+$/.test(value)) {
-      setter(value);
-    }
-  };
 
   return (
     <div className="min-h-screen bg-[#0f172a] p-4 md:p-8 text-white">
@@ -89,32 +76,7 @@ const GameDetail = () => {
           </div>
 
           {/* Input Information */}
-          <div className="bg-slate-800/80 p-6 rounded-2xl border border-slate-700">
-            <h3 className="flex items-center gap-2 font-bold mb-4">
-              <span className="text-[#00D2FF]">👤</span> Enter Your Information
-            </h3>
-            <div className="space-y-4">
-              <input
-                type="text"
-                placeholder="e.g. 12345678"
-                inputMode="numeric"
-                value={gameId}
-                onChange={(e) => handleNumericChange(e, setGameId)}
-                className="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 outline-none focus:border-[#00D2FF] transition"
-              />
-              <input
-                type="text"
-                placeholder="Server ID"
-                value={zoneId}
-                onChange={(e) => handleNumericChange(e, setZoneId)}
-                className="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 outline-none focus:border-[#00D2FF] transition"
-              />
-              <div className="flex justify-between items-center text-sm px-1">
-                <span className="text-slate-400">Player</span>
-                <span className="text-red-500 font-semibold">Invalid</span>
-              </div>
-            </div>
-          </div>
+          <InputId gameName={params.gameSlug} />
 
           {/* Payment Method */}
           <Payment />

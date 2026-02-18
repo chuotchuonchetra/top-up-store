@@ -5,7 +5,7 @@ import GameDetail from "../pages/shop/GameDetail";
 import Checkout from "../pages/shop/Checkout";
 import Login from "../pages/auth/Login";
 import { Register } from "../pages/auth/Register";
-import { AdminDashboard } from "../pages/admin/AdminDashboard";
+import { AdminLayout } from "../layouts/AdminLayout";
 
 const AppRoutes = () => {
   return (
@@ -27,7 +27,7 @@ const AppRoutes = () => {
 
       {/* Fallback Route */}
       <Route path="*" element={<div>Page Not Found</div>} />
-      <Route path="admindashboard" element={<AdminDashboard />} />
+      <Route path="admindashboard" element={<AdminLayout />} />
     </Routes>
   );
 };
