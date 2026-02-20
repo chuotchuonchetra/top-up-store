@@ -25,11 +25,7 @@ router.get("/", async (req, res) => {
         .json({ error: "A valid numeric gameId is required" });
     }
 
-    const packages = await Package.findAll({
-      where: {
-        gameId: parseInt(gameId),
-      },
-    });
+    const packages = await Package.findAll({ include: "packages" });
 
     res.json(packages);
   } catch (error) {

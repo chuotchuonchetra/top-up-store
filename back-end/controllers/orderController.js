@@ -1,13 +1,23 @@
 //orderController.js
-const { Order } = require("../models");
+const { Order, Package, User } = require("../models");
 const router = require("express").Router();
 
 // Get all orders
 router.get("/", async (req, res) => {
   try {
-    const orders = await Order.findAll();
+    const orders = await Order.findAll({
+      include: [
+        {
+          model: Package,
+          attributes: ["amount", "price", "title"],
+          as: "package",
+        }, // Get package info
+        { model: User, as: "user", attributes: ["name", "role"] },
+      ],
+    });
     res.json(orders);
   } catch (err) {
+    console.log(err);
     res.status(500).json({ error: "Failed to fetch orders" });
   }
 });

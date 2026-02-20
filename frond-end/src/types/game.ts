@@ -2,7 +2,7 @@ export interface Package {
   id: number;
   gameId: number;
   title: string; // e.g., "86 Diamonds"
-  diamondAmount: number;
+  amount: number;
   price: string | number; // String if formatted by backend, number if raw decimal
   supplierCode: string;
   createdAt: string;

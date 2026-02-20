@@ -11,7 +11,7 @@ export interface Order {
   serverId: string;
 
   // Match your DBML logic
-  paymentMethod: "credit_card" | "aba" | "aceleda" | "manual";
+  paymentMethod: "credit_card" | "aba" | "aceleda" | "manual" | "balance";
   status: "pending" | "processing" | "completed" | "failed";
 
   // Tracking field from your DBML
